@@ -94,7 +94,7 @@ fclose($finalFile); //close the file
 	file_put_contents($final, $a);
 
 }
-$endTime =microtime();	//program end timestamp
+$endTime = microtime();	//program end timestamp
 $runTime =  $endTime - $startTime; // time it took for program to run
 echo "This program took ", $runTime, " to run ";
 
