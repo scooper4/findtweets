@@ -1,12 +1,16 @@
 <?php
 $startTime =microtime();	// time stamp for start of program
-require "autoload.php";
+require "autoload.php";		//autoloader for twitter oauth
 use Abraham\TwitterOAuth\TwitterOAuth;
+require "autoload1.php"; 	//autoloader for phpdotenv
+$dotenv = new Dotenv\Dotenv(__DIR__);	//create new dot env object
+$dotenv->load();	//Load the enviromental variables from dotenv object
 
-$CONSUMER_KEY = "yD333oiLqpUN3TkG0lUdIqdjn";
-$CONSUMER_SECRET = "bpRKIM7kobakVchgLpl4KSNTYApUEnI1RYlIEmCA2CYcOUp4uk";
-$access_token = "70603590-RKVTJAnXkKlEeBTTrGHsZS95yHaxgbr1QYXfmpLTe";
-$access_token_secret = "gDcuo2FvqrhCb5IstZXRpUMFRhscdaa7srOl9V9bH8";
+//Keys for Twitter API usuage //
+$CONSUMER_KEY = getenv('CONSUMER_KEY');
+$CONSUMER_SECRET = getenv('CONSUMER_SECRET');
+$access_token = getenv("access_token");
+$access_token_secret = getenv("access_token_secret");
 
 $connection = new TwitterOAuth($CONSUMER_KEY, $CONSUMER_SECRET, $access_token, $access_token_secret);
 $content = $connection->get("account/verify_credentials");
